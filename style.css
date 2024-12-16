@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .tab-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  }
+  
+  .tab-menu.hidden {
+    transform: translateY(-100%);
+  }
+  
+  .tab-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .tab-menu li {
+    display: inline;
+  }
+  
+  .tab-menu a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .tab-menu a:hover {
+    color: #4CAF50;
+  }
+
+  .me {
+    width: 130%;
+    position: absolute;
+    top: -100%;
+    left: 200%;
+    transform: translateX(-50%);
+    object-fit: cover;
+    }
+
+  .circle
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4CAF50;
+    clip-path: circle(600px at right 800px);
+  }
+
+  .content
+  {
+    padding: 100px 50px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0; /* ซ่อนเนื้อหา */
+    transform: translateY(50px); /* เลื่อนขึ้นจากล่าง */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .content.visible {
+    opacity: 1; /* ปรับให้เห็น */
+    transform: translateY(0); /* เลื่อนมาจากตำแหน่งปกติ */
+  }
+
+  .textBox
+  {
+    position: relative;
+    max-width: 600px;
+  }
+
+  h2
+  {
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+  }
+
+  span
+  {
+    color: #4CAF50;
+    font-size: 1.2em;
+    font-weight: 900;
+  }
+
+  p
+  {
+    color: #333;
+  }
+
+  .content .textBox a
+  {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+
+  section {
+    padding: 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    position: relative; /* เพิ่มสำหรับการควบคุม */
+}
+
+.highlight {
+    padding: 50px;
+    color: #333;
+    text-align: left; /* ปรับให้ชิดซ้าย */
+    width: 100%; /* ขยายความกว้างให้ครอบคลุม */
+    align-self: flex-start; /* ย้ายคำไปฝั่งซ้าย */
+}
+  h1 {
+    color: #4CAF50;
+    font-size: 64px;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    position: relative;
+  }
+  
+  .image-container .image-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    overflow: hidden; /* ซ่อนส่วนที่เกินจากกรอบ */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .image-container .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ป้องกันรูปบิดเบี้ยว */
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .image-container .image-wrapper:hover img {
+    transform: scale(1.1); /* ขยายรูป */
+    filter: brightness(0.5); /* รูปมืดลง */
+  }
+  
+  .image-container .image-wrapper .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7); /* พื้นหลังข้อความแบบโปร่งใส */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    opacity: 0; /* ซ่อนข้อความ */
+    transition: opacity 0.3s ease;
+  }
+  
+  .image-container .image-wrapper:hover .caption {
+    opacity: 1;
+  }
+
+  .profile-section {
+    display: flex;
+    justify-content: center; /* จัดตำแหน่งให้อยู่กลาง */
+    flex-wrap: wrap; /* อนุญาตให้กรอบขึ้นบรรทัดใหม่หากพื้นที่ไม่พอ */
+    gap: 20px; /* ระยะห่างระหว่างกรอบ */
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .box {
+    width: 100%;
+    margin: 20px auto;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .box-title {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #4CAF50;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  /* กล่องย่อย */
+  .small-box-container {
+    display: flex; /* จัดวาง 2 กล่องให้อยู่ข้างกัน */
+    justify-content: space-between;
+    gap: 20px; /* ระยะห่างระหว่างกล่อง */
+  }
+  
+  .small-box {
+    flex: 1; /* ให้กล่องย่อยขยายเต็มพื้นที่เท่าๆ กัน */
+    padding: 15px;
+  }
+  
+  .box2 {
+    flex: 1 1 calc(33.33% - 40px); /* ความกว้าง 1 ใน 3 ของแถว หักลบระยะห่าง */
+    max-width: 300px; /* ความกว้างสูงสุด */
+    min-width: 250px; /* ความกว้างขั้นต่ำ */
+    padding: 20px;
+    border: 2px solid #4CAF50; /* กรอบสีเขียว */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9); /* สีพื้นขาวโปร่ง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงา */
+  }
+
+  h3 {
+    margin: 10px 0 5px; /* ระยะห่างของหัวข้อ */
+    font-size: 16px;
+  }
+
+  .txt {
+    text-align: center;
+    font-size: large;
+    text-decoration: underline;
+  }
+  
+  .pf {
+    margin: 0 0 15px; /* ระยะห่างด้านล่างของข้อความ */
+    font-size: 14px;
+    line-height: 1.5; /* ความสูงของบรรทัด */
+    background-color: #ffffff;
+    border: 2px solid #f8f102;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+  }
+  
+  .edc {
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: black;
+    transition: transform 0.2s ease-in-out;
+    display: inline-block;
+    margin: 30px;
+  }
+
+.card img {
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card .project {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.container3 .btn {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  margin: 0 5px;
+  background: white;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  color: #000;
+}
+
+.container3 .btn:hover {
+  width: 200px;
+}
+
+.container3 .btn .icon {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 60px;
+  transition: all 0.3s ease-in-out;
+}
+
+.container3 .btn .icon i {
+  font-size: 25px;
+  line-height: 60px;
+  transition: all 0.3s ease-in-out;
+}
+.container3 .btn:nth-child(1):hover .icon{
+  background: #1877F2;
+}
+.container3 .btn:nth-child(2):hover .icon{
+  background: linear-gradient(135deg, 
+                             #515BD4, 
+                             #8134AF, 
+                             #FF0050,
+                             #FFDC80);
+}
+.container3 .btn:nth-child(3):hover .icon{
+  background: #25D366;
+}
+.container3 .btn:nth-child(4):hover .icon{
+  background: #181717;
+}
+.container3 .btn span{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 60px;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+.container3 .btn:nth-child(1) span{
+  color: #1877F2;
+}
+.container3 .btn:nth-child(2) span{
+  color: #9f0290;
+}
+.container3 .btn:nth-child(3) span{
+  color: #25D366;
+}
+.container3 .btn:nth-child(4) span{
+  color: #181717;
+}
